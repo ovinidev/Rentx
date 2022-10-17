@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
-import { ICategories } from '../interfaces/categories';
+import { ISpecification } from '../../../interfaces/ISpecification';
 
-export class Category implements ICategories {
+export class Specification implements ISpecification {
   name: string;
   description: string;
   id?: string;
