@@ -1,16 +1,18 @@
 import express, { json } from 'express';
-import { categoriesRoutes } from './routes/categories.routes';
-import { specificationRoutes } from './routes/specifications.routes';
+import { router } from './routes';
+import swagger from 'swagger-ui-express';
+import swaggerFile from './swagger.json';
 
 const app = express();
 
 app.use(json());
 
-app.use('/categories', categoriesRoutes);
-app.use('/specifications', specificationRoutes);
+app.use('/api-docs', swagger.serve, swagger.setup(swaggerFile));
+
+app.use(router);
 
 const port = 8080;
 
 app.listen(port, () => {
-  console.log(`Rondando server na porta ${port}`);
+  console.log(`Rodando server na porta ${port}`);
 });
