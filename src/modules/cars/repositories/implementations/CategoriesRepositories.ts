@@ -1,4 +1,4 @@
-import { Category } from '../../models/Categories';
+import { Category } from '../../models/Category';
 import { ICategoriesRepository } from '../ICategoriesRepository';
 
 export class CategoriesRepository implements ICategoriesRepository {
