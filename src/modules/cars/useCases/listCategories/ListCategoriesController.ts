@@ -7,8 +7,8 @@ import {
 export class ListCategoriesController {
   constructor(private listCategoriesUseCase: ListCategoriesUseCase) {}
 
-  handle(req: Request, res: Response): Response {
-    const allCategories = this.listCategoriesUseCase.execute();
+  async handle(req: Request, res: Response): Promise<Response> {
+    const allCategories = await this.listCategoriesUseCase.execute();
 
     return res.status(200).json(allCategories);
   }
@@ -17,10 +17,10 @@ export class ListCategoriesController {
 export class ListCategoriesByNameController {
   constructor(private listCategoriesByName: ListCategoriesByNameUseCase) {}
 
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name } = req.params;
 
-    const categorySearched = this.listCategoriesByName.execute(name);
+    const categorySearched = await this.listCategoriesByName.execute(name);
 
     return res.status(200).json(categorySearched);
   }

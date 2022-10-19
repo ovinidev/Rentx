@@ -1,11 +1,11 @@
-import { Category } from '../../models/Category';
+import { Category } from '../../entities/Category';
 import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepositories';
 
 export class ListCategoriesUseCase {
   constructor(private categoriesRepositories: CategoriesRepository) {}
 
-  execute(): Category[] {
-    const allCategories = this.categoriesRepositories.list();
+  async execute(): Promise<Category[]> {
+    const allCategories = await this.categoriesRepositories.list();
 
     return allCategories;
   }
@@ -14,8 +14,8 @@ export class ListCategoriesUseCase {
 export class ListCategoriesByNameUseCase {
   constructor(private categoriesRepositories: CategoriesRepository) {}
 
-  execute(name: string): Category {
-    const response = this.categoriesRepositories.listByName(name);
+  async execute(name: string): Promise<Category> {
+    const response = await this.categoriesRepositories.listByName(name);
 
     return response;
   }

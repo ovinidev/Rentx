@@ -12,11 +12,13 @@ export class CreateCategoryUseCase {
     this.categoriesRepository = categoriesRepository;
   }
 
-  execute({ description, name }: IRequest): void {
-    const categoryAlreadyExists = this.categoriesRepository.listByName(name);
+  async execute({ name, description }: IRequest): Promise<void> {
+    const categoryAlreadyExists = await this.categoriesRepository.listByName(
+      name,
+    );
 
     if (categoryAlreadyExists) throw new Error('Category already exists');
 
-    this.categoriesRepository.create({ name, description });
+    await this.categoriesRepository.create({ name, description });
   }
 }

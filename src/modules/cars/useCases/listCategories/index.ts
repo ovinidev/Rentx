@@ -8,19 +8,24 @@ import {
   ListCategoriesUseCase,
 } from './ListCategoriesUseCase';
 
-const listCategoriesRepository = CategoriesRepository.getInstance();
+export default () => {
+  const listCategoriesRepository = new CategoriesRepository();
 
-const listCategoriesUseCase = new ListCategoriesUseCase(
-  listCategoriesRepository,
-);
+  const listCategoriesUseCase = new ListCategoriesUseCase(
+    listCategoriesRepository,
+  );
 
-export const listCategoriesController = new ListCategoriesController(
-  listCategoriesUseCase,
-);
+  const listCategoriesController = new ListCategoriesController(
+    listCategoriesUseCase,
+  );
 
-export const listCategoriesByNameUseCase = new ListCategoriesByNameUseCase(
-  listCategoriesRepository,
-);
+  // const listCategoriesByNameUseCase = new ListCategoriesByNameUseCase(
+  //   listCategoriesRepository,
+  // );
 
-export const listCategoriesByNameController =
-  new ListCategoriesByNameController(listCategoriesByNameUseCase);
+  // const listCategoriesByNameController = new ListCategoriesByNameController(
+  //   listCategoriesByNameUseCase,
+  // );
+
+  return listCategoriesController;
+};
