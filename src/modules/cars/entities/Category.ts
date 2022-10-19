@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 import { ICategories } from '../../../interfaces/ICategories';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('categories')
+@Entity('Categories')
 export class Category implements ICategories {
   @PrimaryColumn()
   id?: string;

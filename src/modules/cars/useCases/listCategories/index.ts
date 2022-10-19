@@ -1,12 +1,6 @@
 import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepositories';
-import {
-  ListCategoriesByNameController,
-  ListCategoriesController,
-} from './ListCategoriesController';
-import {
-  ListCategoriesByNameUseCase,
-  ListCategoriesUseCase,
-} from './ListCategoriesUseCase';
+import { ListCategoriesController } from './ListCategoriesController';
+import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 
 export default () => {
   const listCategoriesRepository = new CategoriesRepository();
@@ -18,14 +12,6 @@ export default () => {
   const listCategoriesController = new ListCategoriesController(
     listCategoriesUseCase,
   );
-
-  // const listCategoriesByNameUseCase = new ListCategoriesByNameUseCase(
-  //   listCategoriesRepository,
-  // );
-
-  // const listCategoriesByNameController = new ListCategoriesByNameController(
-  //   listCategoriesByNameUseCase,
-  // );
 
   return listCategoriesController;
 };
