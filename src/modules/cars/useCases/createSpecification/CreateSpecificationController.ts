@@ -10,8 +10,12 @@ export class CreateSpecificationController {
       CreateSpecificationUseCase,
     );
 
-    await createSpecificationController.execute({ name, description });
+    try {
+      await createSpecificationController.execute({ name, description });
 
-    return res.status(200).json({ message: 'Criado com sucesso!' });
+      return res.status(200).json({ message: 'Criado com sucesso!' });
+    } catch (err: any) {
+      return res.status(400).json({ message: err.message });
+    }
   }
 }

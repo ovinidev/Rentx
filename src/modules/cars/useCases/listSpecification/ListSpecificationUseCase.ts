@@ -5,7 +5,7 @@ import { SpecificationRepository } from '../../repositories/implementations/Spec
 @injectable()
 export class ListSpecificationUseCase {
   constructor(
-    @inject('CategoriesSpecification')
+    @inject('SpecificationRepository')
     private listSpecificationUseCase: SpecificationRepository,
   ) {}
 

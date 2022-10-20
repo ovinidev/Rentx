@@ -17,8 +17,6 @@ export class Category implements ICategories {
   created_at: Date;
 
   constructor() {
-    if (!this.id) {
-      this.id = v4();
-    }
+    if (!this.id) this.id = v4();
   }
 }
