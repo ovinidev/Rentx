@@ -6,7 +6,7 @@ export interface ICreateSpecificationDTO {
 }
 
 export interface ISpecificationRepository {
-  create: ({ name, description }: ICreateSpecificationDTO) => void;
-  list: () => Specification[];
-  listByName: (name: string) => Specification;
+  create: ({ name, description }: ICreateSpecificationDTO) => Promise<void>;
+  list: () => Promise<Specification[]>;
+  listByName: (name: string) => Promise<Specification>;
 }

@@ -10,13 +10,3 @@ export class ListCategoriesUseCase {
     return allCategories;
   }
 }
-
-export class ListCategoriesByNameUseCase {
-  constructor(private categoriesRepositories: CategoriesRepository) {}
-
-  async execute(name: string): Promise<Category> {
-    const response = await this.categoriesRepositories.listByName(name);
-
-    return response;
-  }
-}

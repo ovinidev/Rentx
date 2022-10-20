@@ -1,10 +1,19 @@
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 import { v4 } from 'uuid';
 import { ISpecification } from '../../../interfaces/ISpecification';
 
+@Entity('Specifications')
 export class Specification implements ISpecification {
-  name: string;
-  description: string;
+  @PrimaryColumn()
   id?: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  description: string;
+
+  @CreateDateColumn()
   created_at: Date;
 
   constructor() {

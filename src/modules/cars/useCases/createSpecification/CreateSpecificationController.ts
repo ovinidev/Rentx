@@ -6,11 +6,11 @@ export class CreateSpecificationController {
     private createSpecificationController: CreateSpecificationUseCase,
   ) {}
 
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name, description } = req.body;
 
-    this.createSpecificationController.execute({ name, description });
+    await this.createSpecificationController.execute({ name, description });
 
-    res.status(200).json({ message: 'Criado com sucesso!' });
+    return res.status(200).json({ message: 'Criado com sucesso!' });
   }
 }
