@@ -8,8 +8,14 @@ export class ListUserByNameController {
 
     const listUserByNameController = container.resolve(ListUserByNameUseCase);
 
-    const user = await listUserByNameController.execute(username);
+    try {
+      const user = await listUserByNameController.execute(username);
 
-    return res.status(200).json(user);
+      return res.status(200).json(user);
+    } catch (err: any) {
+      return res
+        .status(err.statusCode)
+        .send({ message: err.message, code: err.statusCode });
+    }
   }
 }

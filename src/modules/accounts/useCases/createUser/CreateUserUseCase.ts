@@ -1,5 +1,6 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors/AppError';
 import {
   ICreateUserDTO,
   IUserRepository,
@@ -25,11 +26,11 @@ export class CreateUserUseCase {
     const verifyUserExistByEmail = await this.userRepository.listByEmail(email);
 
     if (verifyUserExistByUsername) {
-      throw new Error('Usuário já existe');
+      throw new AppError('Usuário já existe');
     }
 
     if (verifyUserExistByEmail) {
-      throw new Error('Email já registrado');
+      throw new AppError('Email já registrado');
     }
 
     const passwordHash = await hash(password, 8);

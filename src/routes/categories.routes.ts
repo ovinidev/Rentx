@@ -4,8 +4,11 @@ import importCategoryController from '../modules/cars/useCases/importCategory';
 import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
 import { ListCategoriesController } from '../modules/cars/useCases/listCategories/ListCategoriesController';
 import { ListCategoryByNameController } from '../modules/cars/useCases/listCategoryByName/ListCategoryByNameController';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 export const categoriesRoutes = Router();
+
+categoriesRoutes.use(ensureAuthenticated);
 
 const upload = multer({
   dest: './tmp',

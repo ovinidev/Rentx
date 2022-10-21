@@ -17,7 +17,9 @@ export class AuthenticateUserController {
       });
       return res.status(201).json(response);
     } catch (err: any) {
-      return res.status(400).send({ message: err.message });
+      return res
+        .status(err.statusCode)
+        .send({ message: err.message, code: err.statusCode });
     }
   }
 }

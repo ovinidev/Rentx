@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors/AppError';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
@@ -12,7 +13,7 @@ export class DeleteUserUseCase {
     const verifyUserExist = await this.userRepository.listByUsername(username);
 
     if (!verifyUserExist) {
-      throw new Error('Usuário não existe');
+      throw new AppError('Usuário não existe');
     }
 
     this.userRepository.delete(username);

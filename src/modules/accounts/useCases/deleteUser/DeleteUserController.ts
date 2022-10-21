@@ -13,7 +13,9 @@ export class DeleteUserController {
 
       res.status(201).json({ message: 'Usuário deletado com sucesso!' });
     } catch (err: any) {
-      res.status(400).json({ message: err.message });
+      return res
+        .status(err.statusCode)
+        .send({ message: err.message, code: err.statusCode });
     }
   }
 }

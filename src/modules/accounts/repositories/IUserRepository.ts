@@ -24,4 +24,6 @@ export class IUserRepository {
   listByUsername: (username: string) => Promise<User>;
 
   listByEmail: (email: string) => Promise<User>;
+
+  listById: (id: string) => Promise<User>;
 }

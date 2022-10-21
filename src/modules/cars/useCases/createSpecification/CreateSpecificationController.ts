@@ -15,7 +15,9 @@ export class CreateSpecificationController {
 
       return res.status(200).json({ message: 'Criado com sucesso!' });
     } catch (err: any) {
-      return res.status(400).json({ message: err.message });
+      return res
+        .status(err.statusCode)
+        .send({ message: err.message, code: err.statusCode });
     }
   }
 }
