@@ -28,11 +28,18 @@ export class UserRepository implements IUserRepository {
   }
 
   async delete(username: string) {
-    this.repository.delete({ username });
+    await this.repository.delete({ username });
   }
 
-  // list(): Promise<User[]> {}
-  async listByName(username: string): Promise<User> {
+  async list(): Promise<User[]> {
+    return await this.repository.find();
+  }
+
+  async listByUsername(username: string): Promise<User> {
     return await this.repository.findOne({ username });
+  }
+
+  async listByEmail(email: string): Promise<User> {
+    return await this.repository.findOne({ email });
   }
 }

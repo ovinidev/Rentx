@@ -8,8 +8,6 @@ export class CreateCategoryController {
 
     const createCategoryController = container.resolve(CreateCategoryUseCase);
 
-    console.log(name, description);
-
     try {
       await createCategoryController.execute({ name, description });
 

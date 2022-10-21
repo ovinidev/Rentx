@@ -9,7 +9,7 @@ export class DeleteUserUseCase {
   ) {}
 
   async execute(username: string) {
-    const verifyUserExist = await this.userRepository.listByName(username);
+    const verifyUserExist = await this.userRepository.listByUsername(username);
 
     if (!verifyUserExist) {
       throw new Error('Usuário não existe');

@@ -3,13 +3,13 @@ import { User } from '../../entities/User';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
-export class ListUserByNameUseCase {
+export class ListUsersUseCase {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
   ) {}
 
-  async execute(username: string): Promise<User> {
-    return await this.userRepository.listByUsername(username);
+  async execute(): Promise<User[]> {
+    return await this.userRepository.list();
   }
 }

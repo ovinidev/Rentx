@@ -18,6 +18,10 @@ export class IUserRepository {
   }: ICreateUserDTO) => Promise<void>;
 
   delete: (username: string) => Promise<void>;
-  // list: () => Promise<User[]>;
-  listByName: (username: string) => Promise<User>;
+
+  list: () => Promise<User[]>;
+
+  listByUsername: (username: string) => Promise<User>;
+
+  listByEmail: (email: string) => Promise<User>;
 }
