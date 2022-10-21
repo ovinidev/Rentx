@@ -7,16 +7,22 @@ import { ListUsersController } from '../modules/accounts/useCases/listUsers/List
 
 export const usersRoutes = Router();
 
-usersRoutes.use(ensureAuthenticated);
-
 const createUserController = new CreateUserController();
 usersRoutes.post('/', createUserController.handle);
 
 const deleteUserController = new DeleteUserController();
-usersRoutes.delete('/:username', deleteUserController.handle);
+usersRoutes.delete(
+  '/:username',
+  ensureAuthenticated,
+  deleteUserController.handle,
+);
 
 const listUserByNameController = new ListUserByNameController();
-usersRoutes.get('/:username', listUserByNameController.handle);
+usersRoutes.get(
+  '/:username',
+  ensureAuthenticated,
+  listUserByNameController.handle,
+);
 
 const listUsersController = new ListUsersController();
-usersRoutes.get('/', listUsersController.handle);
+usersRoutes.get('/', ensureAuthenticated, listUsersController.handle);

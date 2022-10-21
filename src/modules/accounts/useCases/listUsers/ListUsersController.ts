@@ -11,7 +11,9 @@ export class ListUsersController {
 
       return res.status(200).json(users);
     } catch (err: any) {
-      return res.status(400).json({ message: err.message });
+      return res
+        .status(err.statusCode)
+        .send({ message: err.message, code: err.statusCode });
     }
   }
 }

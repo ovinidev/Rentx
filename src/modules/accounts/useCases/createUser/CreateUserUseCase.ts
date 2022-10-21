@@ -23,11 +23,12 @@ export class CreateUserUseCase {
     const verifyUserExistByUsername = await this.userRepository.listByUsername(
       username,
     );
-    const verifyUserExistByEmail = await this.userRepository.listByEmail(email);
 
     if (verifyUserExistByUsername) {
       throw new AppError('Usuário já existe');
     }
+
+    const verifyUserExistByEmail = await this.userRepository.listByEmail(email);
 
     if (verifyUserExistByEmail) {
       throw new AppError('Email já registrado');
