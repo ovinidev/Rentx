@@ -6,5 +6,6 @@ export interface IUsers {
   password: string;
   driver_license: string;
   isAdmin: boolean;
+  avatar: string;
   created_at: Date;
 }

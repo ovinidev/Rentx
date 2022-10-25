@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-import { AppError } from '../errors/AppError';
 import { UserRepository } from '../modules/accounts/repositories/implementations/UserRepository';
 
 interface ITokenVerified {
@@ -20,18 +19,28 @@ export async function ensureAuthenticated(
 
   const [, token] = authHeader.split(' ');
 
-  const { sub: id } = verify(
-    token,
-    'fe57e2c20af5d4fa504c98a757be5631',
-  ) as ITokenVerified;
+  try {
+    const { sub: id } = verify(
+      token,
+      'fe57e2c20af5d4fa504c98a757be5631',
+    ) as ITokenVerified;
 
-  const userRepository = new UserRepository();
+    const userRepository = new UserRepository();
 
-  const userAlreadyExist = await userRepository.listById(id);
+    const userAlreadyExist = await userRepository.listById(id);
 
-  if (!userAlreadyExist) {
-    return res.status(400).json({ message: 'User not found' });
+    if (!userAlreadyExist) {
+      return res.status(400).json({ message: 'Nenhum usuário encontrado' });
+    }
+
+    req.user = {
+      id: id,
+    };
+
+    next();
+  } catch (err: any) {
+    return res
+      .status(err.statusCode)
+      .json({ message: err.message, code: err.statusCode });
   }
-
-  next();
 }

@@ -1,5 +1,11 @@
 import { inject, injectable } from 'tsyringe';
+import { deleteFiles } from '../../../../utils/file';
 import { IUserRepository } from '../../repositories/IUserRepository';
+
+interface IRequest {
+  user_id: string;
+  avatar_file: string;
+}
 
 @injectable()
 export class UpdateUserAvatarUseCase {
@@ -8,7 +14,15 @@ export class UpdateUserAvatarUseCase {
     private userRepository: IUserRepository,
   ) {}
 
-  async execute() {
-    console.log('oi');
+  async execute({ user_id, avatar_file }: IRequest): Promise<void> {
+    const user = await this.userRepository.listById(user_id);
+
+    if (user.avatar) {
+      await deleteFiles(`./tmp/avatar/${user.avatar}`);
+    }
+
+    user.avatar = avatar_file;
+
+    await this.userRepository.create(user);
   }
 }

@@ -15,6 +15,8 @@ export class UserRepository implements IUserRepository {
     driver_license,
     email,
     password,
+    avatar,
+    id,
   }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name,
@@ -22,6 +24,8 @@ export class UserRepository implements IUserRepository {
       driver_license,
       email,
       password,
+      avatar,
+      id,
     });
 
     await this.repository.save(user);

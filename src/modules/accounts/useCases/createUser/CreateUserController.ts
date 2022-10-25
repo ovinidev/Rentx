@@ -21,7 +21,7 @@ export class CreateUserController {
     } catch (err: any) {
       return res
         .status(err.statusCode)
-        .send({ message: err.message, code: err.statusCode });
+        .json({ message: err.message, code: err.statusCode });
     }
   }
 }
