@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-import { UserRepository } from '../modules/accounts/repositories/implementations/UserRepository';
+import { UserRepository } from '../modules/accounts/repositories/typeorm/UserRepository';
 
 interface ITokenVerified {
   sub: string;
