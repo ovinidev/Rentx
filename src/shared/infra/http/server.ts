@@ -1,10 +1,9 @@
 import express, { json } from 'express';
-import createConnection from './database';
-import './shared/container';
+import createConnection from '../../../database';
+import '../../container';
 import { router } from './routes';
 import swagger from 'swagger-ui-express';
-import swaggerFile from './swagger.json';
-import 'express-async-errors';
+import swaggerFile from '../../../swagger.json';
 
 const app = express();
 

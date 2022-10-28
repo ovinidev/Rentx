@@ -4,7 +4,7 @@ import { AppError } from '../../../../errors/AppError';
 import {
   ICreateUserDTO,
   IUserRepository,
-} from '../../repositories/IUserRepository';
+} from '../../infra/typeorm/repositories/IUserRepository';
 
 @injectable()
 export class CreateUserUseCase {

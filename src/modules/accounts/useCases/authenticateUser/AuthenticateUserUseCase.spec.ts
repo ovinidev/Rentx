@@ -1,6 +1,6 @@
 import { AppError } from '../../../../errors/AppError';
+import { ICreateUserDTO } from '../../infra/typeorm/repositories/IUserRepository';
 import { UserRepositoryInMemory } from '../../repositories/in-memory/UserRepositoryInMemory';
-import { ICreateUserDTO } from '../../repositories/IUserRepository';
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
@@ -66,7 +66,7 @@ describe('Authenticate User', () => {
 
       await authenticateUserUseCase.execute({
         email: user.email,
-        password: user.password,
+        password: '555',
       });
     }).rejects.toBeInstanceOf(AppError);
   });

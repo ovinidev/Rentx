@@ -3,7 +3,7 @@ import { Specification } from '../../entities/Specification';
 import {
   ICreateSpecificationDTO,
   ISpecificationRepository,
-} from '../ISpecificationRepositories';
+} from './ISpecificationRepositories';
 
 export class SpecificationRepository implements ISpecificationRepository {
   private repository: Repository<Specification>;

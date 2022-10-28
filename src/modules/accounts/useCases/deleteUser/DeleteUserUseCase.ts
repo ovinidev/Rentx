@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../../../errors/AppError';
-import { IUserRepository } from '../../repositories/IUserRepository';
+import { IUserRepository } from '../../infra/typeorm/repositories/IUserRepository';
 
 @injectable()
 export class DeleteUserUseCase {

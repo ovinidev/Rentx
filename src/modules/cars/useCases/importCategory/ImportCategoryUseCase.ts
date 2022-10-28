@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { parse } from 'csv-parse';
-import { CategoriesRepository } from '../../repositories/typeorm/CategoriesRepositories';
+import { CategoriesRepository } from '../../infra/typeorm/CategoriesRepositories';
 
 interface IImportCategory {
   name: string;

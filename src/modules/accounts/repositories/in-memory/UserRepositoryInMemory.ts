@@ -1,5 +1,8 @@
 import { User } from '../../entities/User';
-import { ICreateUserDTO, IUserRepository } from '../IUserRepository';
+import {
+  ICreateUserDTO,
+  IUserRepository,
+} from '../../infra/typeorm/repositories/IUserRepository';
 
 export class UserRepositoryInMemory implements IUserRepository {
   users: User[] = [];
