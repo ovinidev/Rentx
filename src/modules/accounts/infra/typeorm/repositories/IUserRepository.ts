@@ -1,4 +1,4 @@
-import { User } from 'src/modules/accounts/entities/User';
+import { User } from 'src/modules/accounts/infra/typeorm/entities/User';
 
 export interface ICreateUserDTO {
   name: string;

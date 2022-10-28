@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
-import { ICategories } from '../../../interfaces/ICategories';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { ICategories } from 'src/interfaces/ICategories';
 
 @Entity('Categories')
 export class Category implements ICategories {

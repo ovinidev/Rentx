@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
-import { IUsers } from '../../../interfaces/IUsers';
+import { IUsers } from '../../../../../interfaces/IUsers';
 
 @Entity('users')
 export class User implements IUsers {
