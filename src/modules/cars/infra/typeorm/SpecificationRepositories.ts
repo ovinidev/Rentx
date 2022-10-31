@@ -13,9 +13,9 @@ export class SpecificationRepository implements ISpecificationRepository {
   }
 
   async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
-    const repository = this.repository.create({ name, description });
+    const specification = this.repository.create({ name, description });
 
-    await this.repository.save(repository);
+    await this.repository.save(specification);
   }
 
   async list(): Promise<Specification[]> {

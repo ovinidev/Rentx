@@ -1,6 +1,6 @@
+import { ISpecification } from '../../../../../interfaces/ISpecification';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 import { v4 } from 'uuid';
-import { ISpecification } from '../../../interfaces/ISpecification';
 
 @Entity('Specifications')
 export class Specification implements ISpecification {
