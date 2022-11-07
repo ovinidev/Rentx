@@ -1,6 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
 import { Car } from './entities/Car';
-import { ICarsRepository, ICreateCarsDTO } from './ICarsRepository';
+import {
+  ICarsRepository,
+  ICreateCarsDTO,
+  IFindCarsDTO,
+} from './ICarsRepository';
 
 export class CarsRepository implements ICarsRepository {
   private repository: Repository<Car>;
@@ -33,5 +37,25 @@ export class CarsRepository implements ICarsRepository {
 
   async findByLicensePlate(license_plate: string) {
     return this.repository.findOne({ license_plate });
+  }
+
+  async findAllCars({ brand, category_id, name }: IFindCarsDTO) {
+    if (brand) {
+      return await this.repository.findOne({ brand });
+    }
+
+    if (category_id) {
+      return await this.repository.findOne({ category_id });
+    }
+
+    if (name) {
+      return await this.repository.findOne({ name });
+    }
+
+    const availableCars = await this.repository.find();
+
+    return availableCars.filter((car) => {
+      return car.available === true;
+    });
   }
 }

@@ -7,6 +7,7 @@ import { ListUsersController } from '../../../../modules/accounts/useCases/listU
 import uploadConfig from '../../../../config/upload';
 import { UpdateUserAvatarController } from '../../../../modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarController';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureUserAdmin } from '../middlewares/ensureUserAdmin';
 
 export const usersRoutes = Router();
 
@@ -17,6 +18,7 @@ const deleteUserController = new DeleteUserController();
 usersRoutes.delete(
   '/:username',
   ensureAuthenticated,
+  ensureUserAdmin,
   deleteUserController.handle,
 );
 

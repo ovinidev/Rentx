@@ -20,7 +20,8 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn --poll src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "test": "jest"
+    "test": "jest",
+    "seed:admin": "ts-node-dev src/shared/infra/seed/admin.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

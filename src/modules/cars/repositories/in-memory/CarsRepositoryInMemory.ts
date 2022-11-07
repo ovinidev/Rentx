@@ -2,6 +2,7 @@ import { Car } from '../../infra/typeorm/entities/Car';
 import {
   ICarsRepository,
   ICreateCarsDTO,
+  IFindCarsDTO,
 } from '../../infra/typeorm/ICarsRepository';
 
 export class CarsRepositoryInMemory implements ICarsRepository {
@@ -39,5 +40,26 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     });
 
     return car;
+  }
+
+  async findAllCars({
+    brand,
+    category_id,
+    name,
+  }: IFindCarsDTO): Promise<Car[]> {
+    const availableCars = this.cars.filter((car) => {
+      if (
+        car.available === true ||
+        (name && car.name === name) ||
+        (brand && car.brand === brand) ||
+        (category_id && car.category_id === category_id)
+      ) {
+        return car;
+      }
+
+      return null;
+    });
+
+    return availableCars;
   }
 }

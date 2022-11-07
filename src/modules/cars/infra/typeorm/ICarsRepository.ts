@@ -10,6 +10,12 @@ export interface ICreateCarsDTO {
   category_id: string;
 }
 
+export interface IFindCarsDTO {
+  brand?: string;
+  category_id?: string;
+  name?: string;
+}
+
 export interface ICarsRepository {
   create({
     name,
@@ -22,4 +28,6 @@ export interface ICarsRepository {
   }: ICreateCarsDTO): Promise<Car>;
 
   findByLicensePlate(license_plate: string): Promise<Car>;
+
+  findAllCars(data: IFindCarsDTO): Promise<Car[] | Car>;
 }

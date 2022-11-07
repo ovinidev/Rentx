@@ -5,9 +5,9 @@ import { router } from './routes';
 import swagger from 'swagger-ui-express';
 import swaggerFile from '../../../swagger.json';
 
-const app = express();
-
 createConnection().then(() => console.log('Conectado ao database'));
+
+const app = express();
 
 app.use(json());
 
